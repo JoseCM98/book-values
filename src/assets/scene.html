@@ -1,30 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>   
+</head>
+ 
   <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="kanji">
-        <a-box position='0 0.5 0' material='color: red;'></a-box>
+        <a-scene embedded arjs markers_start > 
+              <!-- <a-marker  preset="hiro">
+                <a-image width="1"  height="1" position="-0.2 0.9 0" rotation="-70 180 180" src="./img/headerGenerosidad.png"></a-image>
+                <a-image width="1" height="1" position="1 0 0" rotation="-70 180 180" src="./img/generosidad.png"></a-image>
+              </a-marker> -->
+              <a-entity camera></a-entity>
+        </a-scene> 
+    <script src="markets.js"></script>
+    <script >
+      // import {markets} from './markets.js';
+      console.log(markets)
 
-      </a-marker>
+      AFRAME.registerComponent('markers_start',{
+        init:function(){
+          console.log('CREANDO LOS MARKADORES ............');
 
-      <a-marker preset="hiro">
-        <a-entity text="value: Hello World;" position='0 1 0'></a-entity>
-        <a-image width="1" height="1" src="valor.jpg"></a-image>
-         <!-- <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        ></a-entity> -->
-      </a-marker>
+          var sceneEl = document.querySelector('a-scene');
+          //preset="hiro"
+          for (let index = 0; index < markets.length; index++) {
+            const element = markets[index];
+            var markerEl = document.createElement('a-marker');
+            markerEl.setAttribute('type','pattern');
+            markerEl.setAttribute('url',`${markets[index].patt}`);
+            markerEl.setAttribute('id',`${index}`);
 
-      <a-marker type='pattern' url='pattern-marker.patt'>
-        <a-box position='0 0.5 0' material='color: blue;'></a-box>
+            sceneEl.appendChild(markerEl);
 
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
+            var boxEl = document.createElement('a-image');
+            boxEl.setAttribute('id',`image-${index}`);
+            boxEl.setAttribute('width','1');
+            boxEl.setAttribute('height','1');
+            boxEl.setAttribute('position','-0.2 0.9 0');
+            boxEl.setAttribute('rotation','-70 180 180');
+            boxEl.setAttribute('src', `${markets[index].descriptionImage}`);
+            markerEl.appendChild(boxEl);
+
+            var boxEl2 = document.createElement('a-image');
+            boxEl2.setAttribute('id',`image2-${index}`);
+            boxEl2.setAttribute('width','1');
+            boxEl2.setAttribute('height','1');
+            boxEl2.setAttribute('position','1 0 0');
+            boxEl2.setAttribute('rotation','-70 180 180');
+            boxEl2.setAttribute('src', `${markets[index].image}`);
+            markerEl.appendChild(boxEl2);
+          }
+            
+       
+        }
+        
+      });
+      // entityEl.getObject3D(`<a-marker type='pattern' url='pattern-marker.patt'>
+      //                   <a-box position='0 0.5 0' material='color: blue;'></a-box>
+      //               </a-marker>`); 
+      // let scena = document.getElementById('scena');
+      // console.log(scena)
+      // let cadena = ""
+      // for (let i = 0; i < markets.length; i++){
+      //   console.log("entra aqui")
+      //   cadena += `<a-marker type='pattern' url='pattern-marker.patt'>
+      //                   <a-box position='0 0.5 0' material='color: blue;'></a-box>
+      //               </a-marker>`
+      //   // document.getElementById("scena").innerHTML = content
+      // }
+      // cadena += `<a-entity camera></a-entity>`
+      // document.getElementById("scena").innerHTML = cadena
+    </script>
   </body>
 </html>
