@@ -3,31 +3,37 @@ const markets = [
         title:"GENEROSIDAD",
         descriptionImage:"./img/headerGenerosidad.png",
         patt: "./patts/generosidad.patt",
-        image: "./img/generosidad.png"
+        image: "./vids/generosidad.mp4"
     },
 
     {
         title:"AMISTAD",
         descriptionImage:"./img/headerAmistad.png",
         patt: "./patts/amistad.patt",
-        image: "./img/amistad.png"
+        image: "./vids/amistad.mp4"
     },
     {
       title:"RESPETO",
       descriptionImage:"./img/headerRespeto.png",
       patt: "./patts/respeto.patt",
-      image: "./img/respeto.png"
+      image: "./vids/respeto.mp4"
     },
     {
         title:"INTEGRIDAD",
         descriptionImage:"./img/integridadHeader.png",
         patt: "./patts/Integridad.patt",
-        image: "./img/Integridad.png"
+        image: "./vids/integridad.mp4"
       },
       {
         title:"RESPONSABILIDAD",
         descriptionImage:"./img/responsabilidadHeader.png",
         patt: "./patts/responsabilidad.patt",
-        image: "./img/responsabilidad.png"
+        image: "./vids/responsabilidad.mp4"
+      },
+      {
+        title:"HUMILDAD",
+        descriptionImage:"./img/humildadHeader.png",
+        patt: "./patts/humildad.patt",
+        image: "./vids/humildad.mp4"
       },
 ]
